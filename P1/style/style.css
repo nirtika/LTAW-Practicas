@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+}
+h1 , h2{ text-align: center;}
+nav{
+    float: left;
+    background-color: rgb(219, 226, 240);
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+}
+nav a {
+    padding: 35px;
+    font-size: 25px;
+}
+/**estilo redes social**/
+.fa-instagram{color: rgb(223, 58, 173);}
+.fa-facebook-square{color: rgb(24, 120, 199);}
+/*Shopping cart*/
+.fas{ font-size: 22px;}
+
+.caja {
+    float: left;
+    padding: 15px;
+    margin: 150px;
+    box-shadow: 0 8px 5px 0 rgba(0, 0, 0, 0.2);
+}
+button{
+    padding: 5px;
+}
+
+
+
+  /** estilo Footer**/
+/**footer{
+    background-color: rgb(219, 226, 240);
+    text-align: center;
+    padding: 5px;
+    font-size: 18px;
+}**/

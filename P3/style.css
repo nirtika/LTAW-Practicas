@@ -11,9 +11,17 @@ body{ background: linear-gradient(to bottom, #ccffff 0%, #999966 100%); backgrou
 }
 h1{text-align: center;}
 p{color: white;}
+.screen{
+    border: black;
+    background-color: rgb(237, 237, 245);
+    min-height: 150px;
+}
+#display_msg{
+    color: black;
+    padding: 8px;
+}
 .nickname{
     margin: 10px 10px 15px 10px;
-    background-color: black;
     border-radius: 3px;
     padding: 5px;
     font-size: 25px;
@@ -23,4 +31,5 @@ input{
     border-radius: 3px;
     padding: 5px;
     font-size: 15px;
+    width: 400px;
 }

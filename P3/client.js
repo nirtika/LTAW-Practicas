@@ -13,7 +13,7 @@ let nickname = 'Unknown';
 //-- Usuario esta escribiendo
 let writing = false;
 
-//-- Asignación de nick
+//-- Asignación de nickname
 nick.onchange = () => {
   if(nick.value){
     nickname = nick.value;
@@ -24,7 +24,7 @@ nick.onchange = () => {
 socket.on("message", (msg)=>{
   display_msg.innerHTML += '<p>' + msg + '</p>';
 
-  //-- Sonido al recibir mensaje expecto escribiendo...
+  //-- Sonido al recibir mensaje 
   if (!msg.includes("escribiendo...")){  
     sound.play();
   }

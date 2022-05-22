@@ -6,7 +6,6 @@ const fs = require('fs');
 const PUERTO = 9090;
 
 //-- definir tipos de mime
-
 const mime = {
     "html" : "text/html",
     "css" : "text/css",
@@ -15,8 +14,20 @@ const mime = {
     "png" : "image/png",
     "gif" : "image/gif",
     "ico" : "image/ico",
+    "js"   : "application/javascript",
+    "json": "application/json"
 
 };
+
+  // base de datos
+
+  const datos_base = "tienda.json";
+  const data_tienda = fs.readFileSync("tienda.json"); //-- tienda.json
+  const productos = tienda[0].parse(data_tienda); //-- base de datos
+  const pedido = tienda[0].productos //-- lista de productos
+  
+
+  // usuario y contraseña
 
 //-- Crear el sevidor
 const server = http.createServer(function (req, res) {

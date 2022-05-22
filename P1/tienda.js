@@ -1,14 +1,13 @@
 //-- Importar los modulos http, fs y url
 const http = require('http');
 const fs = require('fs');
-const url = require('url');
 
 //-- Definir el puerto a utilizar
 const PUERTO = 9090;
 
 //-- definir tipos de mime
 
-let mime = {
+const mime = {
   '/'    : 'text/html',
   'html' : 'text/html',
   'css'  : 'text/css',
@@ -27,24 +26,25 @@ const server = http.createServer(function (req, res) {
 
   //-- Crear el objeto URL del mensaje de solitud (req)
   //-- y coger el recurso (url)
-  let myURL = new URL(req.url, 'http://' + req.headers['host']);
+  let url = new URL(req.url, 'http://' + req.headers['host']);
 
   //-- Escribir en consola la ruta de nuestro recurso
-  console.log("Recurso recibido: " + myURL.pathname);
+  console.log("Recurso recibido: " + url.pathname);
 
+  let filename="";
     //buscar el archivo 
-  if(myUrl.pathname == '/'){
-    filename += "/tienda.html";
+  if(url.pathname == '/'){
+    filename += "/index.html";
   }else{
-      filename += "." + myUrl.pathname;
+    filename +=  url.pathname;
   }
 
   console.log("Filename:",filename);
-
-
-  let recurso = myUrl.pathname.lastIndexOf(".");
-  let content_type = myUrl.pathname.slice(recurso + 1);  
  
+  content_type = filename.split(".")[1]; 
+  filename = "."+ filename
+
+  let mime_type = mime[content_type];  // tipo de mime
 
   fs.readFile('/index.html', function(err, data){
     //-- Controlar si la pagina es no encontrada.
@@ -52,15 +52,12 @@ const server = http.createServer(function (req, res) {
   
       //si hay error
       if (err) {           
-        data = fs.readFileSync('/error.html')
+        data = fs.readFileSync('error.html')
         res.writeHead(404, {'Content-Type': 'text/html'});
-        res.write(data);
         res.end();
         
     }else{
-        res.writeHead(200, {'Content-Type': mime[content_type]});
-        res.write(data);
-        res.end();
+        res.writeHead(200, {'Content-Type': mime_type});
         console.log("Peticion Atendida, 200 OK");
     }
       

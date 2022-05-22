@@ -55,12 +55,13 @@ const server = http.createServer(function (req, res) {
       if (err) {           
         data = fs.readFileSync('error.html')
         res.writeHead(404, {'Content-Type': 'text/html'});
-        res.end();
+        
         
     }else{
         res.writeHead(200, {'Content-Type': mime_type});
         console.log("Peticion Atendida, 200 OK");
-    }
+        
+      }
       
     });
     //-- Enviar los datos del fichero solicitado  

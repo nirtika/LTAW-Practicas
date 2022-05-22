@@ -29,7 +29,7 @@ const server = http.createServer(function (req, res) {
   let url = new URL(req.url, 'http://' + req.headers['host']);
 
   //-- Escribir en consola la ruta de nuestro recurso
-  console.log("Recurso recibido: " + url.pathname);
+  console.log("Recurso recibido: " + url.href);
 
   let filename="";
     //buscar el archivo 
@@ -46,7 +46,8 @@ const server = http.createServer(function (req, res) {
 
   let mime_type = mime[content_type];  // tipo de mime
 
-  fs.readFile('/index.html', function(err, data){
+
+  fs.readFile(filename, function(err, data){
     //-- Controlar si la pagina es no encontrada.
     //-- Devolver pagina de error personalizada, 404 NOT FOUND
   

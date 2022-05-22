@@ -8,13 +8,13 @@ const PUERTO = 9090;
 //-- definir tipos de mime
 
 const mime = {
-  '/'    : 'text/html',
-  'html' : 'text/html',
-  'css'  : 'text/css',
-  'jpg'  : 'image/jpg',
-  'js'   : 'text/js',
-  'png'  : 'image/png',
-  'gif'  : 'image/gif',
+    "html" : "text/html",
+    "css" : "text/css",
+    "jpeg" : "image/jpeg",
+    "jpg" : "image/jpg",
+    "png" : "image/png",
+    "gif" : "image/gif",
+    "ico" : "image/ico",
 
 };
 

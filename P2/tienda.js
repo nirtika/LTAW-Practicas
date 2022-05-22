@@ -15,8 +15,31 @@ const mime = {
     "png" : "image/png",
     "gif" : "image/gif",
     "ico" : "image/ico",
+    "js"   : "application/javascript",
+    "json": "application/json"
 
 };
+
+  // base de datos
+
+  const datos_base = "tienda.json";
+  const data_tienda = fs.readFileSync("tienda.json"); //-- tienda.json
+  const productos = tienda[0].parse(data_tienda); //-- base de datos
+  const pedido = tienda[0].productos //-- lista de productos
+  const pedido_final = data_tienda[2]['Finalizar']
+  
+
+  // usuario y contraseña
+  let nombre=[];
+  let passwords=[];
+
+  // leer y guaradr en base de datos
+
+  data_tienda[1]["usuarios"].forEach((element, index)=>{
+    console.log("Usuario " + (index + 1) + ": " + element.usuario);
+    nombre.push(element.usuario);
+    passwords.push(element.password)
+  });
 
 //-- Crear el sevidor
 const server = http.createServer(function (req, res) {

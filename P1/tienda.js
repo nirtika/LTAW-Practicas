@@ -6,7 +6,6 @@ const fs = require('fs');
 const PUERTO = 9090;
 
 //-- definir tipos de mime
-
 const mime = {
     "html" : "text/html",
     "css" : "text/css",
@@ -15,8 +14,10 @@ const mime = {
     "png" : "image/png",
     "gif" : "image/gif",
     "ico" : "image/ico",
+    
 
 };
+
 
 //-- Crear el sevidor
 const server = http.createServer(function (req, res) {
@@ -65,7 +66,6 @@ const server = http.createServer(function (req, res) {
 
     res.write(data);
     res.end();
-
     });
 
 });

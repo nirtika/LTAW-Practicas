@@ -1,12 +1,12 @@
 //-- Importar los modulos http, fs y url
 const http = require('http');
 const fs = require('fs');
+const url = require('url');
 
 //-- Definir el puerto a utilizar
 const PUERTO = 9090;
 
-//-- Mensaje de arranque
-console.log("Arrancando servidor...");
+
 
 //-- Crear el sevidor
 const server = http.createServer(function (req, res) {
@@ -16,17 +16,23 @@ const server = http.createServer(function (req, res) {
 
   //-- Crear el objeto URL del mensaje de solitud (req)
   //-- y coger el recurso (url)
-  const myURL = new URL(req.url, 'http://' + req.headers['host']);
+  let myURL = new URL(req.url, 'http://' + req.headers['host']);
 
   //-- Escribir en consola la ruta de nuestro recurso
   console.log("Recurso recibido: " + myURL.pathname);
 
-  res.statusCode = 200;
-  res.statusMessage = "OK :-)";
-  res.setHeader('Content-Type', 'text/plain');
-  //res.write("Soy el happy server\n");
-  res.end()
-  
+    //buscar el archivo 
+  if(myUrl.pathname == '/'){
+    filename += "./tienda.html";
+  }else{
+      filename += "." + myUrl.pathname;
+  }
+
+  console.log("Filename:",filename);
+
+
+  let select = myUrl.pathname.lastIndexOf(".");
+  let content_type = myUrl.pathname.slice(select + 1);  
  
 
   fs.readFile('/index.html', function(err, data){

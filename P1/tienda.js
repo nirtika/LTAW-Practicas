@@ -6,7 +6,18 @@ const url = require('url');
 //-- Definir el puerto a utilizar
 const PUERTO = 9090;
 
+//-- definir tipos de mime
 
+let mime = {
+  '/'    : 'text/html',
+  'html' : 'text/html',
+  'css'  : 'text/css',
+  'jpg'  : 'image/jpg',
+  'js'   : 'text/js',
+  'png'  : 'image/png',
+  'gif'  : 'image/gif',
+
+};
 
 //-- Crear el sevidor
 const server = http.createServer(function (req, res) {
@@ -23,7 +34,7 @@ const server = http.createServer(function (req, res) {
 
     //buscar el archivo 
   if(myUrl.pathname == '/'){
-    filename += "./tienda.html";
+    filename += "/tienda.html";
   }else{
       filename += "." + myUrl.pathname;
   }
@@ -31,18 +42,28 @@ const server = http.createServer(function (req, res) {
   console.log("Filename:",filename);
 
 
-  let select = myUrl.pathname.lastIndexOf(".");
-  let content_type = myUrl.pathname.slice(select + 1);  
+  let recurso = myUrl.pathname.lastIndexOf(".");
+  let content_type = myUrl.pathname.slice(recurso + 1);  
  
 
   fs.readFile('/index.html', function(err, data){
     //-- Controlar si la pagina es no encontrada.
     //-- Devolver pagina de error personalizada, 404 NOT FOUND
   
-      //-- Todo correcto
-      //-- Mandar el mensaje 200 OK
+      //si hay error
+      if (err) {           
+        data = fs.readFileSync('/error.html')
+        res.writeHead(404, {'Content-Type': 'text/html'});
+        res.write(data);
+        res.end();
+        
+    }else{
+        res.writeHead(200, {'Content-Type': mime[content_type]});
+        res.write(data);
+        res.end();
+        console.log("Peticion Atendida, 200 OK");
+    }
       
-      console.log("Peticion Atendida, 200 OK");
     });
     //-- Enviar los datos del fichero solicitado  
 

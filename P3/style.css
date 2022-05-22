@@ -10,7 +10,7 @@ body{ background: linear-gradient(to bottom, #ccffff 0%, #999966 100%); backgrou
     background-color: rgb(196, 202, 206);
 }
 h1{text-align: center;}
-p{color: white;}
+p{color: rgb(17, 17, 17);}
 .screen{
     border: black;
     background-color: rgb(237, 237, 245);
@@ -19,6 +19,7 @@ p{color: white;}
 #display_msg{
     color: black;
     padding: 8px;
+    font-size: 15px;
 }
 .nickname{
     margin: 10px 10px 15px 10px;

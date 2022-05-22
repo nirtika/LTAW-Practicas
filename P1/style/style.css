@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    margin: 0px;
 }
 body{ background: linear-gradient(to top, #ccffcc 15%, #99ccff 66%); background-attachment: fixed;}
 h1 , h2{ text-align: center;}
@@ -39,10 +40,12 @@ button{
     cursor: pointer;
 }
 
-  /** estilo Footer**/
-/**footer{
+  /** estilo Footer*
+.footer{
     background-color: rgb(219, 226, 240);
     text-align: center;
     padding: 5px;
     font-size: 18px;
-}**/
+    position: bottom;
+}
+*/

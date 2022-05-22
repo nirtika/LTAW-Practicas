@@ -19,16 +19,6 @@ const mime = {
     "json": "application/json"
 
 };
-
-  // base de datos
-
-  const datos_base = "tienda.json";
-  const data_tienda = fs.readFileSync("tienda.json"); //-- tienda.json
-  const productos = tienda[0].parse(data_tienda); //-- base de datos
-  const pedido = tienda[0].productos //-- lista de productos
-  const pedido_final = data_tienda[2]['Finalizar']
-  
-
   // usuario y contraseña
   let nombre=[];
   let passwords=[];
@@ -41,8 +31,99 @@ const mime = {
     passwords.push(element.password)
   });
 
+
+  
+  // base de datos
+
+  const datos_base = "tienda.json";
+  const data_tienda = fs.readFileSync("tienda.json"); //-- tienda.json
+  const productos = tienda[0].parse(data_tienda); //-- base de datos
+  const item = tienda[0].productos //-- lista de productos
+  const pedido_final = data_tienda[2]['Finalizar']
+
+  // array para productos
+
+  let productos_base =[]
+  let pcarrito = [] // productos en el carrito
+
+  // añadir los nombre de los productos en el array
+  for (i=0; i<item.length; i++){
+    nombre_prod = Object.keys(item[i])[0]
+    products = item[i]
+    lista_prod = products[nombre_prod]
+    products_base.push(lista_prod)
+  
+  }
+
 //-- Crear el sevidor
 const server = http.createServer(function (req, res) {
+
+  // cookies
+
+  let pedido = '';
+  let username = '';
+  let cookie_pedido ='';
+
+  const cookie = req.headers.cookie
+
+  if (cookie){
+    let cookies = cookie.split(';')
+    //-- Recorro las cookies obtenidas
+    cookies.forEach((element) => {
+
+      //-- Obtengo la cookie completa con el value
+      let[elemento, value] = element.split('=')
+
+      //-- Miro si la cookie es de tipo user
+      if(elemento.trim() === 'user'){
+        username = value
+        console.log(username)
+      }else if (elemento.trim() === 'carrito'){
+        cookie_pedido = value
+      }
+    })
+
+  }else{
+    console.log("No hay cookies")
+  
+  }
+
+  console.log("  Parametros: " + url.searchParams); //-- nombre del usuario
+
+    //-- Obtengo los parametros rellenados en el formulario
+    name_user = url.searchParams.get('nombre')
+    console.log("El nombre de usuario es: " + name_user)
+    let pass = url.searchParams.get('password')
+    console.log("La contraseña es: " + pass)
+    let direccion = url.searchParams.get('direccion')
+    console.log("La direccion es: " + direccion)
+    let tarjeta = url.searchParams.get('tarjeta')
+    console.log("El numero de tarjeta es: " + tarjeta)
+
+ //-- Aqui almaceno el content solicitado
+  let contenido = "";
+
+  //-- Añado el numero de tarjeta y direccion si no son vacio
+  if((direccion != null) && (tarjeta != null)){
+
+    let tramite = {
+      "usuario": name_user,
+      "productos": pcarrito,
+      "tarjeta": tarjeta,
+      "direccion": direccion
+    }
+
+
+    //-- Agregar  pedido en la base Json
+    pedido_final.push(tramite)
+
+    //-- Conviertir variable a cadena JSON
+    let mytienda = JSON.stringify(tienda);
+
+    //-- la guardo en el fichero destino
+    fs.writeFileSync(datos_base, mytienda);
+  }
+
 
   //-- Indicar que se ha recibido una peticion
   console.log("Peticion Recibida");

@@ -61,10 +61,11 @@ const server = http.createServer(function (req, res) {
         res.writeHead(200, {'Content-Type': mime_type});
         console.log("Peticion Atendida, 200 OK");
         
-      }
-      
+    }
+
+    res.write(data);
+    res.end();
     });
-    //-- Enviar los datos del fichero solicitado  
 
 });
 

@@ -28,6 +28,12 @@ nav a {
     margin: 18px 10px 10px 18px;
     box-shadow: 0 8px 5px 0 rgba(0, 0, 0, 0.2);
 }
+.caja-cat {
+    float: left;
+    padding: 15px;
+    margin: 18px 200px 10px 200px;
+    box-shadow: 0 8px 5px 0 rgba(0, 0, 0, 0.2);
+}
 button{
     padding: 8px;
     background-color: rgb(127, 231, 127);
@@ -39,7 +45,13 @@ button{
     box-shadow: 0 8px 5px 0 rgba(0, 0, 0, 0.2);
     cursor: pointer;
 }
-
+.precio{
+    text-align: right;
+    background: rgb(161, 187, 234);
+    padding: 15px;
+    font-weight: bold;
+    font-size: 18px;
+}
   /** estilo Footer*
 .footer{
     background-color: rgb(219, 226, 240);

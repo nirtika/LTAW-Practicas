@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="style/style.css">
     <!--Fontawsome icons-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <script src="login.js"></script>
     <title>Tienda Online</title>
 </head>
 <body>       
@@ -21,12 +22,14 @@
             <a href=""><i class="fas fa-shopping-cart"></i></a></i>
         </nav>
     </div>
-    <h2>Contacto</h21>
-    <form action="" method="post">
+    <h2>Login</h2>
+    <h3>Introduce sus datos </h3>
+    <p></p>
+    <form action="/login" method="post">
         <label for="name">Usuario:</label><br>
-        <input type="text" id="name" name="name" value="Usuario"><br>
+        <input type="text" id="name" name="name" value="username"><br>
         <label for="pass">Contraseña</label><br>
-        <input type="password" id="pass" name="tel" value="password">
+        <input type="password" id="pass" name="passw" value="password">
         <input type="submit" value="Submit">
     </form>
     

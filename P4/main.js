@@ -51,6 +51,7 @@ app.use(express.static('public'));
 
 //------------------- GESTION SOCKETS IO
 //-- Evento: Nueva conexion recibida
+
 io.on('connect', (socket) => {
   console.log('** Nueva conexión **'.yellow + socket.id);
   counter = counter + 1;
@@ -64,7 +65,7 @@ io.on('connect', (socket) => {
   io.send( socket.id  + "</i> " +'se unió. ');
 
   //-- Enviar al render mensaje de conexion
-  win.webContents.send('msg_client', + socket.id  + "</i> " +'se unió. ');
+  win.webContents.send(socket.id  + "</i> " +'se unió. ');
 
 
   //-- Evento de desconexión
@@ -75,10 +76,10 @@ io.on('connect', (socket) => {
     win.webContents.send('users', counter);
 
         //-- Enviar mensaje de desconexión de usuario a todos los usuarios
-        io.send(  socket.id  + " </i> " + 'abandonó el chat. ');
+        io.send(socket.id  + " </i> " + 'abandonó el chat. ');
 
         //-- Enviar al render mensaje de desconexion
-        win.webContents.send('msg_client', +  socket.id  + " </i> " + 'abandonó el chat. ');
+        win.webContents.send( socket.id  + " </i> " + 'abandonó el chat. ');
   });  
 
   //-- Mensaje recibido: Reenviarlo a todos los clientes conectados
@@ -142,15 +143,7 @@ electron.app.on('ready', () => {
         }
     });
 
-  //-- En la parte superior se nos ha creado el menu
-  //-- por defecto
-  //-- Si lo queremos quitar, hay que añadir esta línea
-  //win.setMenuBarVisibility(false)
-
-  //-- Cargar contenido web en la ventana
-  //-- La ventana es en realidad.... ¡un navegador!
-  //win.loadURL('https://www.urjc.es/etsit');
-
+  
   //-- Cargar interfaz gráfica en HTML
   win.loadFile("index.html");
 

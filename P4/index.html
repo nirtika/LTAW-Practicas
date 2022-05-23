@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Permitir sólo scripts y ficheros de la máquina local -->
+    <!-- Con esto se elimina el aviso de seguridad: Insecure Content-Security-Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:" />
+
+    <!-- Hoja de estilo de la interfaz -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Cargar el proceso asociado a esta página -->
+    <script src="index.js" defer></script>
+
+    <title>Chat</title>
+</head>
+<body>
+    <h1>CHAT</h1>
+    <div id= left>
+        <h2>Información:</h2>
+        <ul>
+            <li>Arquitectura: <span id="info1" class="descp"></span> </li>
+            <li>Plataforma: <span id="info2" class="descp"></span></li>
+            <li>Directorio: <span id="info3" class="descp"></span></li>
+            <li>Version node: <span id="info4" class="descp"></span> </li>
+            <li>Version Chrome: <span id="info5" class="descp"></span></li>
+            <li>Version Electron: <span id="info6" class="descp"></span></li>
+        </ul>
+        <h3>Usuarios conectados:</h3>
+            <p id="users"></p>
+        <h3>Url:</h3>
+            <p id="dir"></p>
+
+        <h3>Código QR</h3>
+            <img src=" " id="qr">
+    </div>
+    <div id="right">
+        <p><input type="button" value="Mensaje de prueba" id="btn_test"></p>
+        <hr>
+        <h2>Mensajes</h2>
+        <p id="display"></p>
+    </div>
+</body>
+</html> 

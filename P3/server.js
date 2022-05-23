@@ -2,7 +2,7 @@
 const socket = require('socket.io');
 const http = require('http');
 const express = require('express');
-//const colors = require('colors');
+const colors = require('colors');
 const fs = require('fs');
 
 const PUERTO = 9090;

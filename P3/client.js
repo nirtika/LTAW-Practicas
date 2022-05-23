@@ -2,7 +2,7 @@
 const display_msg = document.getElementById("display_msg");
 const message = document.getElementById("message");
 const sound = document.getElementById("sound");
-const nick = document.getElementById("nickname");
+const nick = document.getElementById("nick");
 
 //-- Crear un websocket. Se establece la conexión con el servidor
 const socket = io();

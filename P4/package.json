@@ -1,0 +1,25 @@
+{
+  "name": "practica-4",
+  "version": "1.0.0",
+  "description": "Mi practica 4",
+  "main": "main.js",
+  "author": "Nirtika",
+  "license": "GPL-3.0",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "colors": "^1.4.0",
+    "electron": "^18.2.4",
+    "electron-builder": "^23.0.3",
+    "express": "^4.18.1",
+    "ip": "^1.1.8",
+    "qrcode": "^1.5.0",
+    "qrcode-terminal": "^0.12.0",
+    "snake-names": "^1.0.9",
+    "socket.io": "^4.5.1",
+    "websocket": "^1.0.34",
+    "wscat": "^5.1.0"
+  }
+}
+
